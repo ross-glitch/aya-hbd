@@ -1,0 +1,347 @@
+:root {
+  --pink: #ffb6c1;
+  --lavender: #e6e6fa;
+  --blue: #add8e6;
+  --cream: #fffdd0;
+  --peach: #ffdab9;
+  --mint: #98ff98;
+  --text-dark: #d84b7a;
+  --text-light: #fff;
+  --modal-bg: #ffe4e1;
+  --modal-card: #fff0f5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Fredoka', sans-serif;
+  background-image: url('/background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  color: var(--text-dark);
+  overflow: hidden; /* prevent scrolling when not needed */
+  position: relative;
+}
+
+/* Background overlay for better readability if needed */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(255, 255, 255, 0.1);
+  z-index: -1;
+}
+
+.container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hero Section */
+.hero-section {
+  text-align: center;
+  z-index: 10;
+  pointer-events: none; /* Let clicks pass through */
+  animation: floatHero 6s ease-in-out infinite;
+}
+
+@keyframes floatHero {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+.hero-title {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 
+    0 0 10px #ff7eb3, 
+    0 0 20px #ff7eb3, 
+    0 0 30px #c86dd7, 
+    0 4px 10px rgba(0,0,0,0.6);
+  margin-bottom: 0.5rem;
+  line-height: 1.1;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  font-weight: 500;
+  color: #fff;
+  text-shadow: 0 0 8px #ff7eb3, 0 2px 5px rgba(0, 0, 0, 0.6);
+}
+
+/* Scattered Friends Container */
+.friends-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Only buttons should be clickable */
+}
+
+/* Base button styling */
+.friend-btn {
+  pointer-events: auto;
+  position: absolute;
+  padding: 1.2rem 3rem;
+  font-size: 1.8rem;
+  font-family: inherit;
+  font-weight: 600;
+  color: var(--text-dark);
+  background: var(--cream);
+  border: 3px solid rgba(255,255,255,0.5);
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1), inset 0 -4px 0 rgba(0,0,0,0.05);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+  animation: floatOrbit 5s ease-in-out infinite alternate;
+}
+
+.friend-btn:hover {
+  transform: scale(1.15) rotate(-3deg);
+  box-shadow: 0 12px 25px rgba(255, 182, 193, 0.6), inset 0 -4px 0 rgba(0,0,0,0.05);
+  animation-play-state: paused;
+}
+
+@keyframes floatOrbit {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(0, 20px); }
+}
+
+/* Individual Button Positioning & Colors (Desktop) */
+.friend-john { top: 20%; left: 18%; background: var(--pink); animation-delay: 0s; animation-duration: 4s; }
+.friend-ella { top: 23%; right: 18%; background: var(--lavender); animation-delay: -1s; animation-duration: 5.5s; }
+.friend-mark { top: 42%; left: 12%; background: var(--blue); animation-delay: -2s; animation-duration: 4.5s; }
+.friend-sophie { top: 46%; right: 12%; background: var(--peach); animation-delay: -3s; animation-duration: 6s; }
+.friend-liam { bottom: 20%; left: 28%; background: var(--mint); animation-delay: -4s; animation-duration: 5s; }
+.friend-chloe { bottom: 23%; right: 28%; background: var(--cream); animation-delay: -1.5s; animation-duration: 4.8s; }
+
+@media (max-width: 768px) {
+  /* Tighter scatter on mobile */
+  .friend-btn { font-size: 1.2rem; padding: 0.8rem 2rem; }
+  .friend-john { top: 10%; left: 5%; }
+  .friend-ella { top: 12%; right: 5%; }
+  .friend-mark { top: 25%; left: 5%; }
+  .friend-sophie { top: 28%; right: 5%; }
+  .friend-liam { bottom: 15%; left: 10%; }
+  .friend-chloe { bottom: 15%; right: 10%; }
+}
+
+/* Modal Styling */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(255, 182, 193, 0.4);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  position: relative;
+  width: 90%;
+  max-width: 600px;
+  background: var(--modal-card);
+  border-radius: 2rem;
+  padding: 2.5rem;
+  box-shadow: 0 25px 50px rgba(255, 105, 180, 0.2), inset 0 0 0 8px var(--pink);
+  transform: scale(0.8) translateY(30px);
+  opacity: 0;
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  background-image: radial-gradient(var(--pink) 1px, transparent 1px);
+  background-size: 20px 20px;
+  border: 4px solid #fff;
+}
+
+.modal-overlay.active .modal-content {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+.modal-close {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: var(--pink);
+  color: white;
+  border: 3px solid #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-close:hover {
+  transform: scale(1.1) rotate(90deg);
+}
+
+.modal-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.modal-decorative {
+  background: var(--cream);
+  padding: 0.4rem 1.5rem;
+  border-radius: 20px;
+  font-size: 1rem;
+  color: #ff7eb3;
+  border: 2px solid var(--pink);
+  position: absolute;
+  top: -45px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.modal-friend-name {
+  font-size: 2.5rem;
+  color: var(--text-dark);
+  text-align: center;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.modal-friend-name::before, .modal-friend-name::after {
+  content: '♥';
+  color: var(--pink);
+  font-size: 1.5rem;
+}
+
+.letter-scroll-area {
+  max-height: 50vh;
+  overflow-y: auto;
+  padding-right: 15px;
+}
+
+/* Custom Scrollbar */
+.letter-scroll-area::-webkit-scrollbar {
+  width: 10px;
+}
+.letter-scroll-area::-webkit-scrollbar-track {
+  background: #ffe4e1;
+  border-radius: 10px;
+}
+.letter-scroll-area::-webkit-scrollbar-thumb {
+  background: var(--pink);
+  border-radius: 10px;
+  border: 2px solid #ffe4e1;
+}
+
+.modal-letter-text {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  color: #5a4b50;
+  white-space: pre-line;
+  min-height: 100px; /* space for typing */
+}
+
+.cursor {
+  display: inline-block;
+  width: 2px;
+  background-color: var(--text-dark);
+  animation: blink 1s step-end infinite;
+  margin-left: 2px;
+  height: 1.2em;
+  vertical-align: middle;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.modal-footer {
+  margin-top: 1.5rem;
+  text-align: right;
+}
+
+.modal-footer-tag {
+  background: var(--cream);
+  padding: 0.4rem 1.2rem;
+  border-radius: 8px;
+  color: var(--text-dark);
+  border: 2px solid #e6b3c4;
+  font-weight: 600;
+  display: inline-block;
+  transform: rotate(-3deg);
+}
+
+/* Click Magic Hearts */
+.magic-heart {
+  position: fixed;
+  pointer-events: none;
+  font-size: 1.5rem;
+  z-index: 9999;
+  animation: floatUpHeart 1s ease-out forwards;
+}
+
+@keyframes floatUpHeart {
+  0% { transform: translateY(0) scale(0.5); opacity: 1; }
+  100% { transform: translateY(-50px) scale(1.5); opacity: 0; }
+}
+
+/* Petals Ambient */
+.petal {
+  position: absolute;
+  pointer-events: none;
+  background: rgba(255, 182, 193, 0.6);
+  border-radius: 15px 0 15px 0;
+  z-index: 5;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-10vh) rotate(0deg) translateX(0);
+    opacity: 0;
+  }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% {
+    transform: translateY(110vh) rotate(360deg) translateX(100px);
+    opacity: 0;
+  }
+}

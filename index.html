@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Aya </title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+
+<body>
+  <!-- Background is handled via CSS -->
+
+  <main class="container">
+    <div class="hero-section">
+      <h1 class="hero-title">Happy Birthday Aya!</h1>
+      <p class="hero-subtitle">surrounded by people who love you</p>
+    </div>
+
+    <div class="friends-container">
+      <!-- Buttons will be positioned via percentage and css -->
+      <button class="friend-btn friend-john" data-name="Elai">Elai</button>
+      <button class="friend-btn friend-ella" data-name="Leah">Leah</button>
+      <button class="friend-btn friend-mark" data-name="Wej">Wej</button>
+      <button class="friend-btn friend-sophie" data-name="Cha">Cha</button>
+      <button class="friend-btn friend-liam" data-name="Liam">Liam</button>
+      <button class="friend-btn friend-chloe" data-name="Chloe">Chloe</button>
+    </div>
+  </main>
+
+  <!-- Modal Overlay -->
+  <div class="modal-overlay" id="letterModal" aria-hidden="true">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Close letter">✕</button>
+      <div class="modal-header">
+        <span class="modal-decorative">a letter for you</span>
+      </div>
+      <div class="modal-body">
+        <h2 class="modal-friend-name" id="modalName">Name</h2>
+        <div class="letter-scroll-area">
+          <p class="modal-letter-text" id="modalText"></p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <span class="modal-footer-tag">with love</span>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
