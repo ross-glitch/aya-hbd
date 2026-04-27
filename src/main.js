@@ -12,12 +12,24 @@ With love,
   Elai ✨`,
   "Leah": `To my Aya,
 
-You were my first friend in college, aside from Yesha and Faith kay kilala ko na sila ngadaan nga duwa. I never thought we would become this close, and I’m grateful that we did. I appreciate you, Aya. It’s funny that you see me as your younger sister, even though you don’t really want one. I guess I’m honored hehe. You are a genuinely good friend, di lang sakon, but to everyone. You always care and consider other people’s feelings, even when you don’t agree sometimes. You’re someone worth keeping in life, Aya. I admire you for your intelligence and for making decisions that are truly good for you. I hope you heal from the things you don’t talk about. You deserve to be happy and to be loved just the way you are. Bisan kis-a, love-hate aton relationship, I’m always here for you bebe ko. I hope our friendship continues to grow, and I’m rooting for you, future RPh. Don’t let anyone drag you down from your dreams.`,
-  "Wej": `Happy Birthday, my roomie!\n\nI really miss our after-class debriefings where we’d unpack each other's chaos (chismis). I hope this year treats you with a lot more kindness. Happy first day of duty? aw ah. HAHAHAAHHA `,
+You were my first friend in college, aside from Yesha and Faith kay kilala ko na sila ngadaan nga duwa. I never thought we would become this close, and I’m grateful that we did. I appreciate you, Aya. It’s funny that you see me as your younger sister, even though you don’t really want one. I guess I’m honored hehe. You are a genuinely good friend, di lang sakon, but to everyone. You always care and consider other people’s feelings, even when you don’t agree sometimes. You’re someone worth keeping in life, Aya. I admire you for your intelligence and for making decisions that are truly good for you. I hope you heal from the things you don’t talk about. You deserve to be happy and to be loved just the way you are. Bisan kis-a, love-hate aton relationship, I’m always here for you bebe ko. I hope our friendship continues to grow, and I’m rooting for you, future RPh. Don’t let anyone drag you down from your dreams.
+
+— Leah.`,
+  "Wej": `Happy Birthday, my roomie!\n\nI really miss our after-class debriefings where we’d unpack each other's chaos (chismis). I hope this year treats you with a lot more kindness. Happy first day of duty? aw ah. HAHAHAAHHA
+  
+  -wejjj ❤ `,
   "Erika": `(KAARAWANISMO)
 
 Sabi nila, sa kolehiyo mahirap makatagpo ng isang tunay na kaibigan. At totoo nga, sa dinami dami ng taong aking nakasama't nakakuwentuhan, isa ka sa mga hindi ko inaasahan. Aya, sa iyong kaarawan gusto ko lamang ipaalam na isa kang biyaya na binigay ng may kapal. Lagi mong tatandaan na ang ating pagkakaibigan ay parang dagat na kung saan hindi makikita ang katapusan. Salamat sayong mga pangaral, payo at sa pag tanggap sakin sa iyong buhay. Isa ka sa mga taong tumulong saking maniwala, na ok lang maging masaya, maging malungkot, at higit sa lahat  magkaroon ng isang tunay na babaeng kaibigan. Maligayang Kaarawan, Aya! Mahal ka namin! Nawa'y nahanap mo na ang tunay na kaligayahan!`,
-  "Elle": `happiest birthday to one of the most genuine souls i know\n\nyou have been more than just a friend to me you became my comfort during my lowest days, my safe place when life too heavy & the person who reminded me that brighter days would come of course. im so hrateful for your presence, your kindness and the way you always make people feel loved & understood. \n\nyou truly deserve every beautiful thing happening in your life right now because you worked hard for it, prayed for it, and stayed strong through everything. seeing you happy, glowing and thriving makes my heart so proud because you deserve all the love, peace, success, and blessings this world can offer. \n\nhappy birthday happy birthday, my ayaness! love you always and forever🥰❤️`
+  "Elle": `happiest birthday to one of the most genuine souls i know\n\nyou have been more than just a friend to me you became my comfort during my lowest days, my safe place when life too heavy & the person who reminded me that brighter days would come of course. im so hrateful for your presence, your kindness and the way you always make people feel loved & understood. \n\nyou truly deserve every beautiful thing happening in your life right now because you worked hard for it, prayed for it, and stayed strong through everything. seeing you happy, glowing and thriving makes my heart so proud because you deserve all the love, peace, success, and blessings this world can offer. \n\nhappy birthday happy birthday, my ayaness! love you always and forever🥰❤️`,
+  "Xcy": `My dear Aya,
+I hope you’re well, and I hope the universe has been kind to you.I hope you’ve enjoyed your day today.You are the bravest woman I’ve ever known, for making one of the hardest decisions in life.I’ve witnessed many parts of you, and I look forward to witnessing more.
+Always remember that I want nothing but for you to have a happy heart.May your wounds heal, preparing you for all the chapters ahead(Ps: yes ilista taka ninang sakon mga puya😘)
+With lots of love, Maria.`,
+  "Josh": `Happy birthday, aya! God bless u my frend sana bigyan ka ng Dyos ng long life at good health. I pray sa success simo nga future! Kag tane maka usad kana.. charot lgz hahahappy birthday aya! 🥳💜\n\n- Josh`,
+"Cha": `Happy birthday, Ex-roommate. I hope you enjoyed your day and I miss your garlic mushroom beef hehe. Always remember ari lang kodi maskin wala man ta ga chat always haha halong kagid permi. Goodluck on your next journey. Thank you for everything especially sang ga manuf ta.
+
+—Cha`
 };
 
 // DOM Elements
@@ -213,7 +225,7 @@ var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 // This function creates an <iframe> (and YouTube player) after the API code downloads.
-window.onYouTubeIframeAPIReady = function() {
+window.onYouTubeIframeAPIReady = function () {
   player = new YT.Player('ytplayer', {
     height: '0',
     width: '0',
@@ -286,7 +298,7 @@ function handleUserScroll() {
 
   clearInterval(autoScrollInterval);
   clearTimeout(resumeScrollTimeout);
-  
+
   // Resume scrolling after 1.5 seconds of no interaction
   resumeScrollTimeout = setTimeout(() => {
     resumeAutoScroll();

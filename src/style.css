@@ -147,16 +147,55 @@ body {
 .friend-sophie { top: 46%; right: 12%; background: var(--peach); animation-delay: -3s; animation-duration: 6s; }
 .friend-liam { bottom: 20%; left: 28%; background: var(--mint); animation-delay: -4s; animation-duration: 5s; }
 .friend-chloe { bottom: 23%; right: 28%; background: var(--cream); animation-delay: -1.5s; animation-duration: 4.8s; }
+.friend-xcy { bottom: 35%; right: 18%; background: var(--pink); animation-delay: -2.5s; animation-duration: 5.2s; }
+.friend-josh { bottom: 30%; left: 22%; background: var(--lavender); animation-delay: -0.5s; animation-duration: 4.2s; }
+.friend-cha { top: 12%; left: 38%; background: var(--mint); animation-delay: -2s; animation-duration: 5s; }
 
 @media (max-width: 768px) {
-  /* Tighter scatter on mobile */
-  .friend-btn { font-size: 1.2rem; padding: 0.8rem 2rem; }
-  .friend-john { top: 10%; left: 5%; }
-  .friend-ella { top: 12%; right: 5%; }
-  .friend-mark { top: 25%; left: 5%; }
-  .friend-sophie { top: 28%; right: 5%; }
-  .friend-liam { bottom: 15%; left: 10%; }
-  .friend-chloe { bottom: 15%; right: 10%; }
+  /* Stacked layout on mobile to prevent overlapping */
+  .friends-container {
+    position: static;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+    padding: 0 10px;
+    height: auto;
+    pointer-events: auto;
+  }
+  
+  .friend-btn {
+    position: static;
+    font-size: 1.1rem;
+    padding: 0.6rem 1.5rem;
+    animation: none;
+    transform: none;
+  }
+  
+  .friend-btn:hover {
+    transform: scale(1.05);
+  }
+
+  /* Reset Next Chapter Button for mobile */
+  .end-credits-btn {
+    position: static;
+    transform: none;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+    animation: pulseCreditsBtnMobile 2s infinite alternate;
+  }
+
+  .end-credits-btn:hover {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes pulseCreditsBtnMobile {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.03); }
 }
 
 /* Modal Styling */
