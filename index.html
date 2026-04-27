@@ -8,7 +8,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Bungee&family=Pacifico&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/src/style.css" />
 </head>
 
@@ -16,9 +16,15 @@
   <!-- Background is handled via CSS -->
 
   <main class="container">
+    <button id="musicToggle" class="music-toggle" aria-label="Toggle Music">
+      <span class="music-icon">🎵</span>
+      <span class="music-text">Play Music</span>
+    </button>
+
+    <div id="ytplayer" style="display: none;"></div>
     <div class="hero-section">
-      <h1 class="hero-title">Happy Birthday Aya!</h1>
-      <p class="hero-subtitle">surrounded by people who love you</p>
+      <h1 class="hero-title">Respawned: Aya (Stronger Version)</h1>
+      <p class="hero-subtitle">Happy Birthday Aya!</p>
     </div>
 
     <div class="friends-container">
@@ -26,11 +32,30 @@
       <button class="friend-btn friend-john" data-name="Elai">Elai</button>
       <button class="friend-btn friend-ella" data-name="Leah">Leah</button>
       <button class="friend-btn friend-mark" data-name="Wej">Wej</button>
-      <button class="friend-btn friend-sophie" data-name="Cha">Cha</button>
-      <button class="friend-btn friend-liam" data-name="Liam">Liam</button>
-      <button class="friend-btn friend-chloe" data-name="Chloe">Chloe</button>
+      <button class="friend-btn friend-sophie" data-name="Erika">Erika</button>
+      <button class="friend-btn friend-chloe" data-name="Elle">Elle</button>
     </div>
+    
+    <button id="endCreditsBtn" class="end-credits-btn">The Next Chapter</button>
   </main>
+
+  <!-- End Credits Scene -->
+  <div id="endCreditsScene" class="end-credits-scene" aria-hidden="true">
+    <button id="backFromCreditsBtn" class="back-btn">← Return to present</button>
+    <div class="credits-scroll-container">
+      <div class="credits-content">
+        <p>Being a strong woman is not about never breaking, never doubting, or never needing help. True strength is found in the courage to continue even when things feel overwhelming, in the ability to rise again after failure, and in the willingness to remain kind in a world that can sometimes be harsh. A strong woman understands that vulnerability is not weakness—it is a form of bravery. She allows herself to feel deeply, to care deeply, and to love without fear, even when she knows that doing so comes with risks.</p>
+
+        <p>Strength also shows in the quiet moments. It is in the way a woman keeps going when no one is watching, when recognition is absent, and when the path ahead is uncertain. It is in her determination to grow, to learn from her mistakes, and to become a better version of herself each day. She sets boundaries when necessary, stands firm in her values, and refuses to let others define her worth. At the same time, she remains compassionate, understanding that everyone is fighting their own battles.</p>
+
+        <p>Being a really good friend is another kind of strength—one that is often overlooked but deeply impactful. A good friend listens without judgment, offers support without expecting anything in return, and stays present even when life becomes busy or complicated. She celebrates the successes of others as if they were her own and offers comfort during difficult times without hesitation. Her loyalty is steady, and her presence is reassuring.</p>
+
+        <p>A strong woman who is also a good friend creates a safe space for others. She is someone people can turn to, not because she has all the answers, but because she genuinely cares. She knows when to give advice and when to simply listen. She respects differences, forgives when possible, and grows alongside the people she loves. Her friendships are built on trust, honesty, and mutual respect.</p>
+
+        <p>In the end, strength and kindness are not opposites—they exist together. A strong woman is not defined by how tough she appears on the outside, but by the depth of her character, the sincerity of her heart, and the impact she has on the lives of others. And as a friend, she becomes a source of light, reminding those around her that they are not alone, that they are valued, and that they are deeply loved.</p>
+      </div>
+    </div>
+  </div>
 
   <!-- Modal Overlay -->
   <div class="modal-overlay" id="letterModal" aria-hidden="true">

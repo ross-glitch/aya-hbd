@@ -28,10 +28,7 @@
 
 body {
   font-family: 'Fredoka', sans-serif;
-  background-image: url('/background.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-color: #0c0812;
   min-height: 100vh;
   color: var(--text-dark);
   overflow: hidden; /* prevent scrolling when not needed */
@@ -39,7 +36,7 @@ body {
 }
 
 /* Background overlay for better readability if needed */
-body::before {
+.container::before {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
@@ -48,13 +45,25 @@ body::before {
 }
 
 .container {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-image: url('/background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: transform 1.5s cubic-bezier(0.65, 0, 0.35, 1);
+  z-index: 100;
+}
+
+.container.slide-up {
+  transform: translateY(-100vh);
 }
 
 /* Hero Section */
@@ -71,7 +80,8 @@ body::before {
 }
 
 .hero-title {
-  font-size: clamp(3rem, 8vw, 6rem);
+  font-family: 'Bungee', cursive;
+  font-size: clamp(1.5rem, 5vw, 2.8rem);
   font-weight: 700;
   color: #fff;
   text-shadow: 
@@ -84,7 +94,8 @@ body::before {
 }
 
 .hero-subtitle {
-  font-size: clamp(1.2rem, 3vw, 2rem);
+  font-family: 'Pacifico', cursive;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
   font-weight: 500;
   color: #fff;
   text-shadow: 0 0 8px #ff7eb3, 0 2px 5px rgba(0, 0, 0, 0.6);
@@ -344,4 +355,162 @@ body::before {
     transform: translateY(110vh) rotate(360deg) translateX(100px);
     opacity: 0;
   }
+}
+
+/* Music Toggle Button */
+.music-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--cream);
+  border: 2px solid var(--pink);
+  border-radius: 30px;
+  padding: 8px 16px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.music-toggle:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(255, 182, 193, 0.4);
+}
+
+.music-toggle.playing {
+  background: var(--pink);
+  color: white;
+  border-color: white;
+  animation: pulseMusic 2s infinite;
+}
+
+@keyframes pulseMusic {
+  0% { box-shadow: 0 0 0 0 rgba(255, 182, 193, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(255, 182, 193, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 182, 193, 0); }
+}
+
+.music-icon {
+  font-size: 1.2rem;
+}
+
+/* End Credits Button */
+.end-credits-btn {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 1rem 2.5rem;
+  font-size: 1.2rem;
+  font-family: 'Bungee', cursive;
+  color: var(--text-light);
+  background: linear-gradient(135deg, #c86dd7, #ff7eb3);
+  border: 3px solid #fff;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  z-index: 50;
+  transition: all 0.3s ease;
+  animation: pulseCreditsBtn 2s infinite alternate;
+}
+
+.end-credits-btn:hover {
+  transform: translateX(-50%) scale(1.05);
+  box-shadow: 0 6px 20px rgba(255, 126, 179, 0.6);
+}
+
+@keyframes pulseCreditsBtn {
+  0% { transform: translateX(-50%) scale(1); }
+  100% { transform: translateX(-50%) scale(1.03); }
+}
+
+/* End Credits Scene */
+.end-credits-scene {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background-color: #0c0812;
+  background-image: 
+    radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+    radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
+    radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px);
+  background-size: 550px 550px, 350px 350px, 250px 250px;
+  background-position: 0 0, 40px 60px, 130px 270px;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+}
+
+.end-credits-scene.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-btn {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  background: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+  padding: 0.5rem 1.5rem;
+  border-radius: 20px;
+  font-family: inherit;
+  font-size: 1.1rem;
+  cursor: pointer;
+  z-index: 210;
+  transition: background 0.3s, color 0.3s;
+}
+
+.back-btn:hover {
+  background: #fff;
+  color: #0c0812;
+}
+
+.credits-scroll-container {
+  width: 90%;
+  max-width: 800px;
+  height: 80vh;
+  overflow-y: auto;
+  position: relative;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+  scrollbar-width: thin;
+  scrollbar-color: #a7e2e8 transparent;
+}
+
+.credits-scroll-container::-webkit-scrollbar {
+  width: 8px;
+}
+.credits-scroll-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+.credits-scroll-container::-webkit-scrollbar-thumb {
+  background: #a7e2e8;
+  border-radius: 4px;
+}
+
+.credits-content {
+  width: 100%;
+  text-align: center;
+  color: #a7e2e8; /* Minecraft cyan hue */
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.4rem;
+  line-height: 1.8;
+  font-weight: 500;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+  padding: 80vh 0;
+}
+
+.credits-content p {
+  margin-bottom: 3rem;
 }
